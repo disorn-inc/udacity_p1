@@ -14,6 +14,7 @@ The goal of this project, the first Term 1 of the [Udacity Self Driving Car Engi
 [image4]: ./output_image/roi.png "Roi"
 [image5]: ./output_image/hough.png "Hough"
 [image6]: ./output_image/final_result.png "Final"
+[image7]: ./test_images/solidWhiteRight.jpg "origin"
 
 
 
@@ -55,7 +56,7 @@ The OpenCV implementation of Gaussian Blur takes a integer kernel parameter whic
 
 The images below show what a typical Gaussian blur does to an image, the original image is on the left while the blurred one is to its right.
 
-![Grayscale vs Blurred Images](./docs/chosen_images_grayscale_vs_blur.png)
+![alt text][image2]
 
 
 ## Canny Edge Detection
@@ -66,7 +67,7 @@ The OpenCV implementation requires passing in two parameters in addition to our 
 
 We show the smoothened grayscale and canny images together below:
 
-![Grayscale Smoothened vs Canny Images](./docs/chosen_images_grayscale_vs_blur.png)
+![alt text][image3]
 
 ## Region Of Interest
 
@@ -75,7 +76,7 @@ Our next step is to determine a region of interest and discard any lines outside
 Looking at the above images, we "guess" what that region may be by following the contours of the lanes the car is in and define a polygon which will act as our region of interest below.
 
 We put the canny and segmented images side by side and observed how only the most relevant details have been conserved:
-![Canny vs Segmented Images](./docs/chosen_images_canny_segmented.png)
+![alt text][image4]
 
 
 ## Hough Transform
@@ -94,7 +95,7 @@ More information about the implementation of Hough Transform in OpenCV can be fo
 
 The Hough transform returns lines, and the below images show what they look like:
 
-![Images with Hough Lines](./docs/chosen_images_hough_lines.png)
+![alt text][image5]
 
 
 
