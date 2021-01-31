@@ -109,13 +109,13 @@ The images below show final result after modify draw_lines() function.
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+One potential shortcoming would be what would happen when optimize slope calculation method because sometime It is not stable. 
 
-Another shortcoming could be ...
+Another shortcoming could be clean code and use better algorithm.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+A possible improvement would be to chang this code to c++ to improve speed when processing.
 
-Another potential improvement could be to ...
+Another potential improvement could be to extract color feature to improve performance in lane detection. 
