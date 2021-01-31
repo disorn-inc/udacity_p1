@@ -12,17 +12,18 @@ The goal of this project, the first Term 1 of the [Udacity Self Driving Car Engi
 [image2]: ./output_image/blur.png "Blur"
 [image3]: ./output_image/canny.png "Canny"
 [image4]: ./output_image/roi.png "Roi"
-[image5]: ./output_image/hough.png "Hough"
+[image5]: ./output_image/hough_1.png "Hough"
 [image6]: ./output_image/final_result.png "Final"
 [image7]: ./test_images/solidWhiteRight.jpg "origin"
+[image8]: ./output_image/hough.png "Hough_I"
 
 
 
 # Setup
 
-Udacity provided sample images of 960 x 540 pixels to train our pipeline against. Below are two of the provided images.
+Udacity provided sample images of solidWhiteRight.jpg. Below is the provided images.
 
-![Original Images](./docs/chosen_original_images.png)
+![alt text][image7]
 
 
 # The Pipeline
@@ -52,9 +53,9 @@ The conversion from RGB to a different space helps in reducing noise from the or
 
 [Gaussian blur](https://en.wikipedia.org/wiki/Gaussian_blur) (also referred to as Gaussian smoothing) is a pre-processing technique used to smoothen the edges of an image to reduce noise. We counter-intuitively take this step to reduce the number of lines we detect, as we only want to focus on the most significant lines (the lane ones), not those on every object. We must be careful as to not blur the images too much otherwise it will become hard to make up a line.
 
-The OpenCV implementation of Gaussian Blur takes a integer kernel parameter which indicates the intensity of the smoothing. For our task we choose a value of _11_.
+The OpenCV implementation of Gaussian Blur takes a integer kernel parameter which indicates the intensity of the smoothing. For our task we choose a value of _3_.
 
-The images below show what a typical Gaussian blur does to an image, the original image is on the left while the blurred one is to its right.
+The images below show what a typical Gaussian blur does to an image.
 
 ![alt text][image2]
 
@@ -65,7 +66,7 @@ Now that we have sufficiently pre-processed the image, we can apply a [Canny Edg
 
 The OpenCV implementation requires passing in two parameters in addition to our blurred image, a low and high threshold which determine whether to include a given edge or not. A threshold captures the intensity of change of a given point (you can think of it as a gradient). Any point beyond the high threshold will be included in our resulting image, while points between the threshold values will only be included if they are next to edges beyond our high threshold. Edges that are below our low threshold are discarded. Recommended low:high threshold ratios are 1:3 or 1:2. We use values _50_ and _100_ respectively for low and high thresholds.
 
-We show the smoothened grayscale and canny images together below:
+I show the canny images below:
 
 ![alt text][image3]
 
@@ -75,7 +76,7 @@ Our next step is to determine a region of interest and discard any lines outside
 
 Looking at the above images, we "guess" what that region may be by following the contours of the lanes the car is in and define a polygon which will act as our region of interest below.
 
-We put the canny and segmented images side by side and observed how only the most relevant details have been conserved:
+I put the segmented images below:
 ![alt text][image4]
 
 
@@ -89,13 +90,19 @@ The next step is to apply the [Hough Transform](https://en.wikipedia.org/wiki/Ho
 Therefore, in such plane, we can more easily identify lines that go via the same point. We however need to move from the current system to a _Hough Space_ which uses _polar coordinates_ one as our original expression is not differentiable when m=0 (i.e. vertical lines). In polar coordinates, a given line will now be expressed as (ρ, θ), where line L is reachable by going a distance ρ at angle θ from the origin, thus meeting the perpendicular L; that is ρ = x cos θ + y sin θ.
 All straight lines going through a given point will correspond to a sinusoidal curve in the (ρ, θ) plane. Therefore, a set of points on the same straight line in Cartesian space will yield sinusoids that cross at the point (ρ, θ). This naturally means that the problem of detecting points on a line in cartesian space is reduced to finding intersecting sinusoids in Hough space.
 
-![Hough and Cartesian Spaces](./docs/chosen_images_grayscale_vs_blur.png)
-
 More information about the implementation of Hough Transform in OpenCV can be found [here](http://docs.opencv.org/trunk/d6/d10/tutorial_py_houghlines.html)
 
 The Hough transform returns lines, and the below images show what they look like:
 
 ![alt text][image5]
+
+## Improve the draw_lines() function
+
+In this stage I will modify draw_lines() function to create continue line on the left and right lanes, I modified the draw_lines() function by create list that collect m and b of left line and right line. next I calculate slope and intersect and define value of end point from roi both top and bottom next calculate mean value of all m and b and make condition to draw left and right line from end point.
+
+The images below show final result after modify draw_lines() function.
+
+![alt text][image8]
 
 
 
