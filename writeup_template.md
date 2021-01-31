@@ -35,15 +35,25 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
 ![alt text][image1]
+
 This is blur image.
+
 ![alt text][image2]
+
 This is image after use canny.
+
 ![alt text][image3]
+
 This is roi in image.
+
 ![alt text][image4]
+
 This is line on image by hough transform.
+
 ![alt text][image5]
-this is final result.   
+
+this is final result. 
+![alt text][image6]  
 
 
 ### 2. Identify potential shortcomings with your current pipeline
