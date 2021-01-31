@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./output_image/gray.png "Grayscale"
 [image2]: ./output_image/blur.png "Blur"
 [image3]: ./output_image/canny.png "Canny"
 [image4]: ./output_image/roi.png "Roi"
@@ -53,7 +53,7 @@ This is line on image by hough transform.
 ![alt text][image5]
 
 this is final result.
- 
+
 ![alt text][image6]  
 
 
